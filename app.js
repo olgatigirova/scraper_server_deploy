@@ -7,7 +7,8 @@ const http = require('http');
 const config = require('config');
 
 const app = express();
-const serverPort = config.application.port;
+app.set('port', (process.env.PORT || config.application.port));
+const serverPort = app.get('port');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
