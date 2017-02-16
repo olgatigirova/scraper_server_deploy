@@ -4,7 +4,7 @@ info:
   description: "API for scraper server"
   version: "0.0.1"
   title: "Scraper API"
-host: "localhost:3000"
+host: "scraper-server-deploy.herokuapp.com"
 schemes:
 - "http"
 produces:
