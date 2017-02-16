@@ -2,8 +2,9 @@
   "name": "scraper",
   "version": "0.0.1",
   "description": "test scraper server",
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js ",
+    "start": "node app.js",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec --colors --recursive test/eslint.js test/unit test/integration"
   },
   "dependencies": {
