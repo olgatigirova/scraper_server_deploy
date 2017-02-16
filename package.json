@@ -4,8 +4,7 @@
   "description": "test scraper server",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec --colors --recursive test/eslint.js test/unit test/integration"
+    "start": "node app.js"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
@@ -17,9 +16,9 @@
     "debug": "^2.6.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
+    "fakeredis": "^2.0.0",
     "got": "^6.7.1",
     "js-yaml": "^3.3.0",
-    "redis": "^2.6.5",
     "swagger-tools": "0.10.1",
     "winston": "^2.3.0"
   },

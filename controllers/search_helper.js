@@ -1,12 +1,11 @@
 const config = require('config');
 const Promise = require('bluebird');
-const redis = require('redis');
+const redis = require("fakeredis");
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
 const log = require('../log');
 const SearchEngine = require('./search_engine').SearchEngine;
 
-let redisClientInstance;
 const SEARCH_HISTORY_KEY = 'searchHistory';
 
 module.exports = {
@@ -14,7 +13,6 @@ module.exports = {
   listSearchReqsGen,
   delSearchKeyGen,
   processFormData,
-  parseQuery,
 };
 
 function *searchDomGen(args) {
@@ -22,7 +20,7 @@ function *searchDomGen(args) {
   let keyExists = 0;
   let foundElements = '';
 
-  const client = yield redisClient();
+  const client = redisClient();
   [searchKey, url_str, element, level] = parseQuery(args);
 
   keyExists = yield client.existsAsync(searchKey);
@@ -41,7 +39,7 @@ function *searchDomGen(args) {
 }
 
 function *listSearchReqsGen() {
-  const client = yield redisClient();
+  const client = redisClient();
   const result = yield client.smembersAsync(SEARCH_HISTORY_KEY);
   yield client.quitAsync();
   return result;
@@ -52,7 +50,7 @@ function *delSearchKeyGen(args) {
   let keyExists = 0;
   let result = false;
 
-  const client = yield redisClient();
+  const client = redisClient();
   [searchKey] = parseQuery(args);
 
   keyExists = yield client.existsAsync(searchKey);
@@ -96,15 +94,5 @@ function getTtl() {
 }
 
 function redisClient() {
-  return new Promise((resolve, reject) => {
-    if (redisClientInstance && redisClientInstance.connected) {
-      return resolve(redisClientInstance);
-    }
-    const client = redis.createClient(config.redisOptions);
-    client.on('error', reject);
-    client.on('connect', () => {
-      redisClientInstance = client;
-      return resolve(client);
-    });
-  });
+  return redis.createClient(config.redisOptions.port, config.redisOptions.host);
 }
