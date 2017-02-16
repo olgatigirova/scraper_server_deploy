@@ -20,7 +20,7 @@ const options = {
 
 const spec = fs.readFileSync('./api/swagger.yaml', 'utf8');
 const swaggerDoc = jsyaml.safeLoad(spec);
-swaggerDoc.host = `scraper-server-deploy.herokuapp.com`; 
+swaggerDoc.host = `localhost:${serverPort}`; 
 
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(middleware.swaggerMetadata());
