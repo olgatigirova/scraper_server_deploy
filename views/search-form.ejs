@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<HTML>
+  <HEAD>
+    <TITLE>Search Form</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="grey">
+    <b>Please fill the following fields:</b>
+    
+  <form action="/api/search/" method="post" name="search_form">
+    <p><input type="text" name="url" value=""> Enter URL <Br>
+    <input type="text" name="element" value=""> Enter element to search</p>
+    
+    <select multiple size="6" name="level">
+      <option disabled>Choose the search level</option>
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+      <option value="4">Level 4</option>
+      <option value="5">Level 5</option>
+    </select></p>
+
+   <p><input type="submit" value="Submit"></p>
+  </form>
+
+  </BODY>
+</HTML>
