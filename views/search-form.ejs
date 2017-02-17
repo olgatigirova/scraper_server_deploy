@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<HTML>
-  <HEAD>
-    <TITLE>Search Form</TITLE>
-  </HEAD>
-
-  <BODY bgcolor="grey">
-    <b>Please fill the following fields:</b>
-    
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Search Form</title>
+ </head>
+ <body bgcolor="WhiteSmoke">
   <form action="/api/search/" method="post" name="search_form">
-    <p><input type="text" name="url" value=""> Enter URL <Br>
-    <input type="text" name="element" value=""> Enter element to search</p>
-    
-    <select multiple size="6" name="level">
-      <option disabled>Choose the search level</option>
-      <option value="1">Level 1</option>
-      <option value="2">Level 2</option>
-      <option value="3">Level 3</option>
-      <option value="4">Level 4</option>
-      <option value="5">Level 5</option>
-    </select></p>
-
-   <p><input type="submit" value="Submit"></p>
+   <table align=center style="position:absolute; top:15%" width="100%" cellspacing="4" cellpadding="8" >
+    <tr>
+     <td></td>
+     <td><h3>Please fill the following fields:</h3></td>
+    </tr>
+    <tr><td></td><td></td></tr>
+    <tr>
+     <td align="right">Enter URL: </td>
+     <td><input type="text" name="url" maxlength="100" size="40"></td>
+    </tr>
+    <tr>
+     <td align="right">Enter element to search: </td>
+     <td><input type="text" name="element" maxlength="50" size="40"></td>
+    </tr>
+    <tr>
+     <td align="right" valign="top">Choose the search level:</td>
+     <td><select multiple size="5" name="level" style="width: 175px;" align="center">
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+      </select></td>
+    </tr>
+    <tr>
+     <td></td>
+     <td><input type="submit" value="Start search"></td>
+    </tr>
+   </table>
   </form>
-
-  </BODY>
-</HTML>
+ </body>
+</html>
