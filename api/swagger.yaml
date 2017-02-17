@@ -4,7 +4,7 @@ info:
   description: "API for scraper server"
   version: "0.0.1"
   title: "Scraper API"
-host: "scraper-server-deploy.herokuapp.com"
+host: "localhost:3000"
 schemes:
 - "http"
 produces:
@@ -44,7 +44,7 @@ paths:
             items:
               $ref: "#/definitions/Search"
         500:
-          description: "{\"error\":\"Response code 404 (Not Found)\"}"
+          description: "Error if incorrect URL is given"
         default:
           description: "Unexpected error"
           schema:
