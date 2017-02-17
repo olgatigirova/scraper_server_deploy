@@ -9,6 +9,7 @@ schemes:
 - "http"
 produces:
 - "application/json"
+- "text/html"
 paths:
   /api/search/:
     get:
